@@ -1,0 +1,29 @@
+/* pages/myPost/myPost.wxss */
+.btnc{
+  width: 100%;
+  height: 70rpx;
+  z-index: 999;
+ position: fixed;
+  left: 0px;
+  top: px;
+  opacity: 1;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc
+ 
+}
+.base{
+  display: inline-block;
+  width:49%;
+  height: inherit;
+  
+  text-align: center;
+  line-height: 70rpx;
+
+}
+.base1{
+  border-right: 1px solid #ccc
+}
+.marg{
+  height: 80rpx;
+}
+
