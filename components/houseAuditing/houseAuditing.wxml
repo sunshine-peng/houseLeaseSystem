@@ -1,0 +1,19 @@
+<view class="tui-list-box" >
+  <view class="tui-gallery-list" wx:if='{{houseAuditing.length!=0}}' wx:for="{{houseAuditing}}" wx:key="from_id" >
+  <view class="auditing">{{item.auditing==0?'审核中':'发布失败'}}</view>
+    <image class="gallery-img" src="{{item.src[0]}}"></image>
+    <view class="gallery-box gallery-left">
+      <text class="gallery-comon gallery-name">{{item.typearry[0]}}•{{item.cellName}}</text>
+      <text class="gallery-comon gallery-detail">{{item.area}}㎡|{{item.typearry[1]}}</text>
+      <text class="gallery-comon gallery-money">￥{{item.money}}元/月</text>
+      <text class="gallery-comon gallery-location">{{item.location}}</text>
+      <text class="gallery-comon gallery-houseSet">
+      <text class="goods goods1">{{item.houseGoods[0]}}</text>
+      <text class="goods goods2">{{item.houseGoods.length>1?item.houseGoods[1]:'优质好房'}}</text></text>
+      <text class="gallery-comon gallery-time">起租日期：{{item.time}}</text>
+    </view>
+
+
+  </view>
+
+</view>

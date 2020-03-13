@@ -1,0 +1,62 @@
+<view class="bg">
+  <view class="head">
+    <view class="headIcon">
+      <image src="{{userInfo.avatarUrl}}" style="width:70px;height:70px;"></image>
+    </view>
+    <view class="login">
+      {{userInfo.nickName}}
+    </view>
+  </view>
+  <button class="button" open-type="getUserInfo" wx:if="{{!hasUserInfo&& canIUse}}" bindgetuserinfo="doAuthorization"> 微信登录 </button>
+</view>
+
+
+<view class="hr"></view>
+<navigator url="/pages/myPost/myPost">
+  <view class='item'>
+    <view class="title">我的发布</view>
+
+    <view class="detail2">
+      <text>></text>
+    </view>
+  </view>
+</navigator>
+<view class="line"></view>
+<navigator url="/pages/myInfo/myInfo">
+  <view class='item'>
+    <view class="title">我的资料</view>
+    <view class="detail2">
+      <text>></text>
+    </view>
+  </view>
+</navigator>
+
+<view class="hr"></view>
+<navigator url="/pages/collected/collected">
+<view class='item'>
+  <view class="title">我的收藏</view>
+  <view class="detail2">
+    <text> ></text>
+  </view>
+</view>
+</navigator>
+<view class="line"></view>
+<navigator url="/pages/userOrder/userOrder">
+<view class="item">
+  <view class="title">我的租房</view>
+  <view class="detail2">
+    <text> ></text>
+  </view>
+</view>
+</navigator>
+<view class="line"></view>
+<navigator url="/pages/service/service">
+  <view class="item">
+    <view class="title">客服管理</view>
+    <view class="detail2">
+      <text> ></text>
+    </view>
+  </view>
+</navigator>
+
+<view class="hr"></view>

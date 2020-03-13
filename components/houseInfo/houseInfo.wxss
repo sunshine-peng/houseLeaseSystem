@@ -1,0 +1,116 @@
+.tui-gallery-list {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30rpx;
+  position: relative;
+}
+
+.gallery-img {
+  width: 271rpx;
+  height: 185rpx;
+  margin-left: 58rpx;
+  flex: 0 0 auto;
+  border-radius: 10rpx;
+}
+
+.gallery-box {
+  margin-top: 0rpx;
+  width: 400rpx;
+  height: 185rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.gallery-name {
+  display: block;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+  font-weight: bold;
+  position: absolute;
+  font-size: 35rpx;
+  top: -12rpx;
+  color: rgb(5, 5, 5);
+}
+.gallery-comon {
+  display: block;
+  width: 400rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-family: '楷体';
+  position: absolute;
+}
+
+.gallery-detail {
+  overflow: hidden;
+  font-size: 27rpx;
+  color: #8f8f94;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 30rpx;
+}
+
+.gallery-time {
+  top: 144rpx;
+  color: #8f8f94;
+}
+
+.gallery-location {
+  top: 75rpx;
+  color: #8f8f94;
+}
+
+.gallery-money {
+  top: 30rpx;
+  right: -140rpx;
+  color: rgb(250, 200, 30);
+  font-size: 32rpx;
+}
+
+.gallery-time, .gallery-location, .gallery-detail, .gallery-name {
+  right: 5rpx;
+}
+
+.gallery-left {
+  padding-left: 10px;
+}
+
+.gallery-right {
+  padding-right: 10px;
+}
+
+/* navigator{
+  width: 100%;
+  height: 185rpx;
+} */
+
+/* .container{
+  display: flex;
+  
+} */
+
+.goods {
+  display: inline-block;
+  width: 160rpx;
+  height: 32rpx;
+  background-color: #eee;
+  border-radius: 6rpx;
+  font-size: 26rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #aaa;
+}
+
+.goods1 {
+  position: absolute;
+  left: -21rpx;
+  top: 120rpx;
+}
+
+.goods2 {
+  position: absolute;
+  left: 180rpx;
+  top: 120rpx;
+}

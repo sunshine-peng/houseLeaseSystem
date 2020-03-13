@@ -1,0 +1,163 @@
+page {
+  background-color: rgb(223, 219, 219);
+}
+
+.bac {
+  width: 794;
+  height: 236rpx;
+  background-size: contain;
+  background-image: url("https://webimg.ziroom.com/24c39d44-7d1d-4342-9461-b452d9a4a8a8.jpg");
+}
+
+.issue-container {
+  width: 100%;
+}
+
+/***********物品信息*************/
+
+.goods-info {
+  display: flex;
+  padding: 30rpx;
+  line-height: 61rpx;
+  color: #4f5050;
+  box-sizing: border-box;
+}
+
+.goods-info1 {
+  padding: 30rpx;
+  line-height: 61rpx;
+  color: #4f5050;
+  box-sizing: border-box;
+}
+
+.goods-info .title {
+  flex: 3;
+}
+
+.title1 {
+}
+
+.goods-info .content {
+  flex: 7;
+  color: #000;
+}
+
+.border-b {
+  border-bottom: 1px solid rgb(158, 156, 156);
+}
+
+.goods-pic {
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.post-pic-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.pic-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pic-container image {
+  margin: 15rpx 70rpx 0 0;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.pic-item {
+  position: relative;
+}
+
+.pic-item .pic-delete {
+  position: absolute;
+  right: -55rpx;
+  top: -20rpx;
+  width: 60rpx;
+  height: 40rpx;
+}
+
+.post-warming {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 30rpx;
+  color: deeppink;
+}
+
+.setIcon {
+  width: 59rpx;
+  height: 37rpx;
+  margin-right: -18rpx;
+  padding-top: 15rpx;
+}
+
+.picker {
+  font-size: 35rpx;
+  margin-right: 10rpx;
+  color: rgba(253, 130, 48, 1);
+}
+
+.inpt {
+  width: 204rpx;
+  line-height: 60rpx;
+  padding-top: 6rpx;
+  text-align: right;
+}
+
+.btn {
+  width: rpx;
+  height: 60rpx;
+  margin-top: 10rpx;
+  border: 1px solid rgb(9, 109, 134);
+  background-color: #049191;
+  border-radius: 10rpx;
+}
+
+/*checkbox未选中时样式 */
+
+checkbox .wx-checkbox-input {
+  /* 自定义样式.... */
+  border-radius: 10rpx;
+   
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  /* border: none; */
+  border-radius: 10rpx;
+  border-color: #2792ff !important;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  /* 去除对号 */
+  content: '';
+  /* background: #fff; */
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 2rpx;
+  /* background: red; */
+  background-color: #2792ff;
+  /* 居中 *//* margin-top: 0rpx; *//* display: flex; *//* position: relative; */
+}
+
+.house {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.houseset {
+  display: inline-block;
+  width: 200rpx;
+  margin-left: 10rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  flex: 1;
+  box-sizing: border-box;
+}

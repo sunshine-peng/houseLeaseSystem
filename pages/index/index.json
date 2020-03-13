@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "house-item": "/components/houseInfo/houseInfo",
+    "select": "/components/select/select",
+    "selecthouse":"/components/selectHouse/selecthouse"
+  }
+}

@@ -1,0 +1,45 @@
+<view class="bg">
+  <view class="head">
+    <view class="headIcon">
+      <image src="{{userInfo.avatarUrl}}" style="width:70px;height:70px;"></image>
+    </view>
+    <view class="login">
+      {{userInfo.nickName}}
+    </view>
+  </view>
+  </view>
+  <form bindsubmit="myInfoSubmit">
+  <view class="container" >
+  <view class="item">
+  <text class="my-text">姓名</text>
+  <input type="text" name='nickname' class="my-info"></input>
+  </view>
+  <view class="item">
+  <text class="my-text">电话</text>
+  <input type="text" name='tel' class="my-info"></input>
+  </view>
+  <view class="item">
+  <text class="my-text">性别</text>
+  <radio-group class="classify my-info" bindchange="radioChange">
+    <label class="classify-label" wx:for-items="{{items}}" wx:key="gender">
+      <radio value="{{item.gender}}" checked="{{item.checked}}" /> <text class="classify-text">{{item.value}}</text>
+    </label>
+</radio-group>
+  </view>
+  <view class="item">
+  <text class="my-text">出生日期</text>
+   <view class="section">
+        <picker mode="date" value="{{date}}" start="1900-09-01" end="2030-10-20" bindchange="bindDateChange">
+          <view class="picker my-data">
+            {{dates}}
+          </view>
+        </picker>
+      </view>
+  </view>
+   <view class="item detail1">
+  <text class="my-text">职业</text>
+  <input type="text" name='occupation' class="my-info"></input>
+  </view>
+  </view>
+<button form-type="submit" class="btn">发送</button>
+  </form>

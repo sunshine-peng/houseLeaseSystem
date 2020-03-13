@@ -1,0 +1,97 @@
+<form bindsubmit="handleSubmit">
+  <view isue-container>
+    <view class="bac"></view>
+    <view class="goods-info border-b">
+      <text class="title">房东姓名</text>
+      <input type="text" class="content" name="name" value="{{ form_info }}"></input>
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">电话</text>
+      <input type="text" class="content" name='tel' value="{{ form_info }}"></input>
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">户型</text>
+      <view class="section flexjac">
+        <picker class='content picker' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <view>
+            {{ defaults }}
+          </view>
+        </picker>
+
+      </view>
+      <image src="../../img/arrow-right.png" class="setIcon"></image>
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">租金</text>
+      <input type="text" class="content" name='money' value="{{ form_info }}"></input>
+      <text class="title1">元/月</text>
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">面积</text>
+      <input type="text" class="content" name="area" value="{{ form_info }}"></input>
+      <text class="title1">平方米</text>
+
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">所在城市</text>
+      <input type="text" class="content" value='{{province}} {{city}}' bindtap="bindlocation"></input>
+    </view>
+
+    <view class="goods-info border-b">
+      <text class="title">小区名字</text>
+      <input type="text" class="content" name="cellName" value="{{ form_info }}"></input>
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">具体位置</text>
+      <input type="text" class="content" name="location" value="{{ form_info }}"></input>
+    </view>
+    <view class="goods-info border-b">
+      <text class="title">起租日期</text>
+      <view class="section">
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2030-10-20" bindchange="bindDateChange">
+          <view class="picker my-data">
+            {{dates}}
+          </view>
+        </picker>
+      </view>
+      <image src="../../img/arrow-right.png" class="setIcon"></image>
+    </view>
+
+    <view class='goods-info border-b goods-pic'>
+      <view class='post-pic-info'>
+        <text>上传物品信息</text>
+        <text class='pic-num'>{{ picList.length }}/2</text>
+      </view>
+      <view class='pic-container'>
+        <image src='../../img/add-select.png' bindtap='chooseImage' mode="aspectFill"></image>
+        <view wx:for="{{ picList }}" wx:key="index" class="pic-item">
+          <image wx:if="{{ picList.length }}" src="{{ item }}" bindtap='handleImagePreview' mode="aspectFill" data-idx="{{index}}">
+          </image>
+          <image wx:if="{{ picList.length }}" src="../../img/delete.png" class='pic-delete' bindtap='chooseImageCancel' data-idx="{{index}}"></image>
+        </view>
+      </view>
+
+    </view>
+    <view class="goods-info1 border-b">
+      <text class="title1">房源设施</text>
+      <view class="house">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{items}}">
+            <view class="houseset">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+            </view>
+          </label>
+        </checkbox-group>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{items}}">
+            <view class="houseset">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}" /> {{item.value}}
+            </view>
+           
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+  <button form-type="submit" class="btn">发送</button>
+</form>

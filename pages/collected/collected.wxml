@@ -1,0 +1,7 @@
+<view></view>
+<house-item  houseInfo="{{ houseInfo }}"></house-item>
+<view class="footer">
+
+<view class="btn" bindtap="allop">批量管理</view>
+
+</view>

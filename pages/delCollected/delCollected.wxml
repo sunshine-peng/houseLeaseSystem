@@ -1,0 +1,32 @@
+<view class="tui-list-box" bindtap="selectToggle">
+  <label class="tui-gallery-list" wx:for="{{houseInfo}}" wx:key="from_id" >
+
+     <checkbox-group class='checked' bindchange="checkboxChange">
+          <label class="checkbox">
+              <checkbox value="{{item.from_id}}" checked="{{item.checked}}" />
+         
+          </label>
+        </checkbox-group>
+    
+    <image class="gallery-img" src="{{item.src[0]}}"></image>
+
+
+    <view class="gallery-box gallery-left">
+      <text class="gallery-comon gallery-name">{{item.typearry[0]}}•{{item.cellName}}</text>
+      <text class="gallery-comon gallery-detail">{{item.area}}㎡|{{item.typearry[1]}}</text>
+      <text class="gallery-comon gallery-money">￥{{item.money}}元/月</text>
+      <text class="gallery-comon gallery-location">{{item.location}}</text>
+      <text class="gallery-comon gallery-houseSet">
+      <text class="goods goods1">{{item.houseGoods[0]}}</text>
+      <text class="goods goods2">{{item.houseGoods.length>1?item.houseGoods[1]:'优质好房'}}</text></text>
+      <text class="gallery-comon gallery-time">起租日期：{{item.time}}</text>
+    </view>
+
+
+ </label>
+
+</view>
+<view class="footer">
+
+<view class="btn" bindtap="delCollected">取消收藏</view>
+</view>
