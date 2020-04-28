@@ -1,2 +1,8 @@
 
 <view bindtap="test">test</view>
+<form bindsubmit="handleData">
+<view class="img">
+<image  src='../../img/add-select.png' bindtap="chooseImage" mode="aspectFill"></image>
+</view>
+<button class="btn" form-type="submit"></button>
+</form>

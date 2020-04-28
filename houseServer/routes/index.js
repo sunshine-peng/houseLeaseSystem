@@ -420,7 +420,7 @@ router.get('/findOrder', (req, res, next) => {
         sql = `SELECT * FROM user_order WHERE id=${user.id_input}`
     }else if(user.from_id_input != null && user.from_id_input !=''){
         if(user.name_input != '' && user.tel_input == ''){
-            sql = `SELECT * FROM user_order WHERE user_name='${user.name_input}'
+            sql = `SELECT * FROM user_order WHERE user_name LIKE '%${user.name_input}%'
             and from_id=${user.from_id_input}`
         }else if(user.name_input==''&&user.tel_input!=''){
             sql = `SELECT * FROM user_order WHERE user_tel='${user.tel_input}'
@@ -430,11 +430,11 @@ router.get('/findOrder', (req, res, next) => {
         }
     } else if (user.name_input != '' && user.tel_input != '') {
         console.log('666')
-        sql = `SELECT * FROM user_order WHERE user_name='${user.name_input}'
+        sql = `SELECT * FROM user_order WHERE user_name LIKE '%${user.name_input}%'
     and user_tel='${user.tel_input}' `
     } else if (user.name_input != '' && user.tel_input == '') {
         console.log('999')
-        sql = `SELECT * FROM user_order WHERE user_name='${user.name_input}'`
+        sql = `SELECT * FROM user_order WHERE user_name LIKE '%${user.name_input}%'`
     } else if(user.name_input==''&&user.tel_input!=''){
         console.log('888')
         sql = `SELECT * FROM user_order WHERE user_tel='${user.tel_input}'`

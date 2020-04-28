@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
-var URL = require('url');
-var User = require('./user');
-var db = require('../models/mysql');
-var date=require('../date/dateFormat')
+let express = require('express');
+let router = express.Router();
+let path=require('path')
+let URL = require('url');
+
+var optfile = require('../public/javascripts/read_fs');
+const stringRandom = require('string-random');
+let User = require('./user');
+let db = require('../models/mysql');
+let date=require('../date/dateFormat')
+let formidable=require('formidable')
+let fs=require('fs')
+
+
 var success = {
   'success': 'true'
 }
@@ -11,7 +19,8 @@ var success = {
 /* GET users listing. */
 router.post('/houseRediste', (req, res, next) => {
   var houseInfo = req.body
-  // console.log('houseInfo')
+  console.log('houseInfo')
+  console.log(houseInfo)
   // console.log(houseInfo)
   var date=Date.now()
   houseInfo.date=date
@@ -43,6 +52,7 @@ router.post('/houseRediste', (req, res, next) => {
 router.get('/show', function (req, res, next) {
   var urlObj = URL.parse(req.url, true)
 
+  // console.log(urlObj.query)
   console.log(urlObj.query)
 
   var qurey = urlObj.query.currentPage
@@ -222,6 +232,10 @@ router.get('/show', function (req, res, next) {
 
 
 
+  // console.log('qurey1')
+  // console.log('qurey')
+  // console.log(qurey.currentPage)
+  // console.log(urlObj.query._city)
   console.log('qurey1')
   console.log('qurey')
   console.log(qurey.currentPage)
@@ -236,6 +250,7 @@ router.get('/show', function (req, res, next) {
     if (err) {
       console.log(err)
     } else {
+      // console.log(result)
       console.log(result)
       if (result.length % 5 == 0) {
         houseInfo.data = result
@@ -298,6 +313,8 @@ router.get('/type', function (req, res, next) {
     if (err) {
 
     } else {
+      console.log('7876162')
+      console.log(result)
       if(status==0){
         res.json({
           success:true,
@@ -308,11 +325,14 @@ router.get('/type', function (req, res, next) {
           typearr.push(element.type_name)
           success.data = typearr
           console.log(success)
-          res.send(success)
+         
         });
+        res.send(success)
       }
 
     }
+
+       
    
   })
 });
@@ -331,6 +351,7 @@ router.get("/findPost", (req, res, next) => {
       console.log(err)
     } else {
       houseInfo.data = data
+      // console.log(data)
       console.log(data)
     }
     res.send(houseInfo)
@@ -342,6 +363,8 @@ router.post('/register', (req, res, next) => {
   // var urlObj=URL.parse(req.url,true).query
 
   var myinfo = req.body
+  // console.log('urlObj')
+  // console.log(myinfo)
   console.log('urlObj')
   console.log(myinfo)
   var register_time=Date.now()
@@ -364,6 +387,8 @@ router.post('/updateInfo', (req, res, next) => {
   // var urlObj=URL.parse(req.url,true).query
 
   var myinfo = req.body
+  // console.log('urlObj')
+  // console.log(myinfo)
   console.log('urlObj')
   console.log(myinfo)
   
@@ -580,5 +605,75 @@ router.get('/payLease',(req,res,next) => {
   
 
 })
+router.post('/uploadImage', function (req, res) {
+  console.log('lll')
+    //既处理表单，又处理文件上传
+    var form = new formidable.IncomingForm()
+  //   // var userPath
+  //   // create(`upload/${openid}`
+    let uploadDir = path.join(__dirname, '../upload/')
+  console.log(uploadDir)
+    form.uploadDir = uploadDir//本地文件夹目录路径
+    form.parse(req, (err, fields, files) => {
+    console.log(files.pic)
+  // 设置文件上传文件夹/路径，__dirname是一个常量，为当前路径
+   let oldPath = files.pic.path//这里的路径是图片的本地路径
+   console.log(oldPath)//图片传过来的名字
+   let fileName = files.pic.name.lastIndexOf(".");//取到文件名开始到最后一个点的长度
+  console.log(fileName)
+   let fileNameLength = files.pic.name.length;//取到文件名长度
+   let fileFormat = files.pic.name.substring(fileName + 1, fileNameLength);
+   let setPath =  stringRandom(16) + '.' + fileFormat
+   let newPath = path.join(path.dirname(oldPath), setPath)
+   console.log(newPath)
+  // 这里我传回一个下载此图片的Url
+   var downUrl =  setPath//这里是想传回图片的链接
+  //  var sql = 'insert into imgurl(bookid,imgURL) values(?,?)'
+  //  var addparams = [bookid, downUrl]
+  //  mysql.insert(sql, addparams, result => {
+  //  })
+  //  if (pageName === 'handAuto') {
+  //    pageName === 'sell'
+  //    var modSql = 'UPDATE bookinfo SET imgurl = ? WHERE bookid = ?';
+  //       var modSqlParams = [downUrl, bookid];
+  //       mysql.insert(modSql, modSqlParams, result => {
+  
+  //       })
+  //     }
+      fs.rename(oldPath, newPath, () => {//fs.rename重命名图片名称
+        // console.log('返回请求')
+        res.json({
+    success:true,
+     downUrl: downUrl 
+  })
+        // res.send(downUrl)
+      })
+    })
+  })
+ router.get(/^\/upload\/(.+)\.(jpg|png|gif)$/,(req,res,next)=>{
+  var src = RegExp.$1+'.'+RegExp.$2
+ console.log('src')
+ console.log(src)
+ res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+//  var imgpath=path.join(__dirname)+''
+var path1=path.join(__dirname,'../upload/'+src)
+console.log('path1')
+console.log(path1)
+     optfile.readImg(path1, res);
+     console.log("主程序结束");
+ 
+
+
+  //  let imgobj=JSON.parse(urlobg.query)
+   
+  //  for(var key in imgobj){
+  //    console.log(key)
+  // res.sendFile( __dirname ,'./lojI8sRXRuZB1ave.jpg');
+    
+  //  }
+ })
+
+module.exports = router;
+// 处理图片上传
 
 module.exports = router;

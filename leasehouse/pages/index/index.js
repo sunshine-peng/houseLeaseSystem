@@ -168,7 +168,7 @@ Page({
 
   swipclick: function(e) {
 
-    console.log(this.data.swiperCurrent);
+    // console.log(this.data.swiperCurrent);
 
     wx.switchTab({
 
@@ -215,7 +215,7 @@ Page({
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -230,7 +230,7 @@ Page({
       },
       success:res => {
         if(res.data.success){
-          console.log(res)
+          // console.log(res)
           var housetype=[{
             text:'0'
           }]
@@ -243,10 +243,10 @@ Page({
           // })
           // console.log(arr)
           var json = JSON.parse(JSON.stringify(res.data.data).replace(/type_name/g, "text"));
-console.log(json)
+// console.log(json)
            var housetype1=housetype.concat(json)
-           console.log('housetype')
-           console.log(housetype1)
+          //  console.log('housetype')
+          //  console.log(housetype1)
           this.setData({
             housetype:housetype1
           })
@@ -276,9 +276,17 @@ console.log(json)
           if(res.data.data.length!=0){
           res.data.data.forEach(item => {
             let resImg = item.src.split(',')
+            // 格式化图片路径
+            // console.log('resData')
+            // console.log(resImg)
+            let resArr = resImg.map(value => {
+              return app.globalData.util.BASE_URL + '/users/upload/' + value
+            })
+            item.src = resArr
+          
             // console.log('resImage')
             // console.log(resImg)
-            item.src = resImg
+            // item.src = app.globalData.util.BASE_URL+'/users/up' +resImg
             item.isshow=true
             let houseGoods = item.houseGoods.split('-')
             item.houseGoods = houseGoods

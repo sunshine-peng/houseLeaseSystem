@@ -433,9 +433,16 @@ Page({
       },
       success: res => {
         console.log('5555')
-
+      
         let resImg = res.data.src.split(',')
-        res.data.src = resImg
+        // 格式化图片路径
+        // console.log('resData')
+        // console.log(resImg)
+        let resArr = resImg.map(value => {
+          return app.globalData.util.BASE_URL + '/users/upload/' + value
+        })
+      
+        res.data.src =resArr
 
         let typearry = res.data.typearry.split('-')
         res.data.typearry = typearry

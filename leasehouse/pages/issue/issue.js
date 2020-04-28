@@ -127,17 +127,18 @@ Page({
   },
 
   chooseImage() { // 点击选择图片小图标
+    var that = this
     wx.chooseImage({
-      count: 2,
+      count: 4,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: (res) => { // 选择图片成功的回调
-        const images = this.data.picList.concat(res.tempFilePaths)
+      success: function (res) {
+        console.log(res.tempFilePaths)
 
-
-        this.setData({
-
-          picList: images.length <= 2 ? images : images.slice(0, 2)
+        const images = that.data.picList.concat(res.tempFilePaths)
+        console.log(images)
+        that.setData({
+          picList: images.length <= 4 ? images : images.slice(0, 4)
         })
       },
     })
@@ -369,7 +370,7 @@ Page({
     _fromvalues._city = this.data._city
     _fromvalues.auditing = 0
     _fromvalues.typearry = this.data.defaults
-    _fromvalues.src = this.data.picList.join(',')
+   
     // console.log('_fromvalues.src')
     // console.log(_fromvalues.src)
 
@@ -380,6 +381,29 @@ Page({
       title: '上传中',
       mask: true
     })
+    console.log(_this.data.picList)
+    console.log('this.data.picList')
+    for (var i = 0; i < _this.data.picList.length; i++) {
+      wx.uploadFile({
+        url: app.globalData.util.BASE_URL + '/users/uploadImage',
+        filePath: _this.data.picList[i],
+        name: 'pic',
+        success: (res) => {
+          console.log(res)
+          var resData = JSON.parse(res.data)
+          if (resData.success) {
+            _this.data.imgsList.push(resData.downUrl)
+          }
+          //  console.log('999999')
+          if (_this.data.picList.length == _this.data.imgsList.length) {
+            console.log(_this.data.imgsList.length)
+            console.log('999999')
+            _fromvalues.src = _this.data.imgsList.join(',')
+            console.log('_fromvalues.src99')
+            console.log(_fromvalues.src)
+       
+    console.log('_fromvalues.src')
+    console.log(_fromvalues.src)
     wx.request({
       method: 'post',
       url: 'http://127.0.0.1:3002/users/houseRediste',
@@ -429,6 +453,10 @@ Page({
         }
       },
     })
+          }
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -463,6 +491,9 @@ Page({
 
           this.data.multiArray[1] = this.data.multiArray[1].concat(res.data.data)
           var arry = this.data.multiArray
+          console.log('arry888')
+          console.log(arry)
+
 
           this.setData({
             multiArray: arry

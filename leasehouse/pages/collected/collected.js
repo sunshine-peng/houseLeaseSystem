@@ -55,9 +55,13 @@ console.log(from_id)
       if(res.data.data!=null){
       res.data.data.forEach(item => {
         let resImg = item.src.split(',')
-        // console.log('resImage')
+        // 格式化图片路径
+        // console.log('resData')
         // console.log(resImg)
-        item.src = resImg
+        let resArr = resImg.map(value => {
+          return app.globalData.util.BASE_URL + '/users/upload/' + value
+        })
+        item.src = resArr
 
         let houseGoods = item.houseGoods.split('-')
         item.houseGoods = houseGoods

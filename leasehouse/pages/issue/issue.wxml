@@ -60,7 +60,7 @@
     <view class='goods-info border-b goods-pic'>
       <view class='post-pic-info'>
         <text>上传物品信息</text>
-        <text class='pic-num'>{{ picList.length }}/2</text>
+        <text class='pic-num'>{{ picList.length }}/4</text>
       </view>
       <view class='pic-container'>
         <image src='../../img/add-select.png' bindtap='chooseImage' mode="aspectFill"></image>

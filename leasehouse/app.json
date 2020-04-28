@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/service/service",
     "pages/houseDetail/houseDetail",
     "pages/userOrder/userOrder",
     "pages/myPost/myPost",
@@ -8,7 +9,6 @@
     "pages/issue/issue",
     "components/select/select",
     "pages/mine/mine",
-    "pages/service/service",
     "pages/collected/collected",
     "pages/delCollected/delCollected",
     "pages/logs/logs",

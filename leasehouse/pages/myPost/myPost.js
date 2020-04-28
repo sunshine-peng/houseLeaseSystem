@@ -53,12 +53,24 @@ Page({
            
           })
             houseInfo.forEach(item => {
-              let resImg = item.src.split(",")
-              item.src = resImg
+              let resImg = item.src.split(',')
+              // 格式化图片路径
+              // console.log('resData')
+              // console.log(resImg)
+              let resArr = resImg.map(value => {
+                return app.globalData.util.BASE_URL + '/users/upload/' + value
+              })
+              item.src = resArr
             })
             houseAdutiting.forEach(item => {
-              let resImg = item.src.split(",")
-              item.src = resImg
+              let resImg = item.src.split(',')
+              // 格式化图片路径
+              // console.log('resData')
+              // console.log(resImg)
+              let resArr = resImg.map(value => {
+                return app.globalData.util.BASE_URL + '/users/upload/' + value
+              })
+              item.src = resArr
             })
           this.setData({
             houseInfo: houseInfo,

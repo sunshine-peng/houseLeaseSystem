@@ -79,7 +79,7 @@ page {
 }
 
 .hr1 {
-  margin-top: 40rpx;
+  margin-top: 30rpx;
   border: 1rpx solid #eee;
 }
 
@@ -122,19 +122,22 @@ page {
 
 .houset {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  /* align-items: flex-start; */
+  align-content: space-around;
+  
 }
 
 .housset-item {
   width: 200rpx;
   height: 40rpx;
+  
   line-height: 40rpx;
   text-align: center;
   background-color: #eee;
   border-radius: 10rpx;
-  margin-top: 20rpx;
+  margin: 15rpx 20rpx;
 }
 
 /* .houset-name{

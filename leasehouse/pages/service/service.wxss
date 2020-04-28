@@ -1,1 +1,22 @@
 /* pages/service/service.wxss */
+.img{
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid rebeccapurple;
+  position: relative
+}
+image{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+ 
+}
+.btn{
+  width:60rpx;
+  height: 40rpx;
+  background-color: burlywood;
+  border-radius: 6rpx;
+}
