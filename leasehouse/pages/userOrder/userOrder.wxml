@@ -1,0 +1,49 @@
+<view class="tui-list-box" bindtap="selectToggle">
+  <navigator class="tui-gallery-list" wx:for="{{orderInfo}}" wx:key="from_id" url="/pages/houseDetail/houseDetail?from_id={{item.from_id}}">
+
+     
+    
+    <image class="gallery-img" src="{{item.src[0]}}"></image>
+
+
+    <view class="gallery-box gallery-left">
+      <text class="gallery-comon gallery-name">{{item.typearry[0]}}•{{item.cellName}}</text>
+      <text class="gallery-comon gallery-detail">{{item.area}}㎡|{{item.typearry[1]}}</text>
+      <text class="gallery-comon gallery-money">￥{{item.money}}元/月</text>
+      <text class="gallery-comon gallery-location">{{item.location}}</text>
+      <view class="gallery-comon gallery-houseSet">
+      <text class="gallery-comon gallery-lease_term">租约时长：{{item.lease_term}}</text>
+       <text class="gallery-comon gallery-start_time">起租日：{{item.start_time1}}</text>
+        <text class="gallery-comon gallery-end_time">到期日：{{item.end_time1}}</text>
+      </view>
+    </view>
+    <view class="payBtn" catchtap="payBtn" data-index="{{index}}">{{item.lease_time==null?'未支付':'支付'}}</view>
+  </navigator>
+</view>
+<view class="maskPanel {{isshow?'show':'hidden'}}" bindtap="cancelShow">
+<view class="payPanel" catchtap="payPanel">
+<text class="pay_way">付款方式</text>
+<view class="item_common item">
+<text class="text_common every_text">每月租金</text>
+<text class="text_common every_lease">￥{{currentInfo.money}}元/每月</text>
+</view>
+<view class="item_common item1" >
+<text class="text_common every_text">押金</text>
+<text class="text_common every_lease">￥{{currentInfo.money}}元</text>
+</view>
+<view class="item_common item2" bindtap="payMent" data-num="1" wx:if='{{currentInfo.disappear}}'>
+<text class="text_common payment">首付共支付</text>
+<text class="text_common total_money" >￥{{currentInfo.money*2}}元</text>
+</view>
+<view class="item_common item3" bindtap="payMonth" data-num="1">
+<text class="text_common payment" >房租续费(月付)</text>
+<text class="text_common total_money" >￥{{currentInfo.money}}元</text>
+</view>
+<view class="item_common item3" bindtap="paySeason" data-num="3">
+<text class="text_common payment">房租续费(季付)</text>
+<text class="text_common total_money" >￥{{currentInfo.money*3}}元</text>
+</view>
+<view class="season"></view>
+<view ></view>
+</view>
+</view>

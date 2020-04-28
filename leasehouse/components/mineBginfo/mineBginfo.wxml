@@ -1,0 +1,8 @@
+<!-- 个人资料背景图 + 头像和 id 组件  -->
+<view class="profile-info flex-center border-b">
+  <image class='info-thumb' src='{{userInfo.avataUrl||userInfo.avatarUrl}}'></image>
+  <view class='info-id'>
+    <text class='id-text'>{{userInfo.nickName}}</text>
+    <image class='info-gender' src='{{ userInfo.gender == 0 ? "/static/sexw.png" : "/static/sexm.png"}}'></image>
+  </view>
+</view>
