@@ -49,6 +49,7 @@
       :total="this.houseType.length">
     </el-pagination>
   </div>
+  
     </div>
 </template>
 

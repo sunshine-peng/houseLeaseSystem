@@ -60,7 +60,9 @@
      align= 'center'
       prop="houseGoods"
       label="房屋设施"
-      width="200">
+      width="200"
+      :show-overflow-tooltip='true'
+       >
     </el-table-column>
     <el-table-column
      align= 'center'

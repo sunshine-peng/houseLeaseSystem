@@ -6,7 +6,9 @@
           <el-table
     :data="houseData"
     border
+    
     style="width: 100%">
+    
     <el-table-column
       fixed
        align= 'center'
@@ -51,11 +53,16 @@
       label="面积"
       width="120">
     </el-table-column>
+    
     <el-table-column
      align= 'center'
       prop="houseGoods"
       label="房屋设施"
-      width="200">
+      width="200"
+     :show-overflow-tooltip='true'
+     
+    >
+     
     </el-table-column>
    
     <el-table-column
@@ -134,7 +141,20 @@ import axios from 'axios'
         })
         .then(res => {
             if(res.data.success){
+              res.data.data.forEach(item => {
+                 let resImg = item.src.split(',')
+            // 格式化图片路径
+            console.log('resData')
+            console.log(resImg)
+            let resArr = resImg.map(value => {
+              return 'http://127.0.0.1:3002/users/upload/' + value
+            })
+            item.src = resArr
+              })
                 this.houseList=res.data.data
+                console.log('this.houseList')
+                console.log(this.houseList)
+                
             }else{
                 this.$message('获取信息失败')
             }
@@ -175,5 +195,19 @@ import axios from 'axios'
 </script>
 <style scoped>
    
-        
+        .demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+  .cloumn-hidden{
+    overflow: hidden;
+  }
 </style>

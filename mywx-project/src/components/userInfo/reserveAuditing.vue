@@ -1,5 +1,6 @@
 <template>
   <div>
+    <section class="form-style"> 
     <el-form :label-position="labelPosition" label-width="80px" :model="reserveInfo">
       <el-form-item label="姓名">
         <el-input v-model="reserveInfo.user_name"></el-input>
@@ -39,6 +40,7 @@
         <el-button type="success" @click="agree">审核通过</el-button>
       </el-row>
     </el-form>
+    </section>
   </div>
 </template>
 <script>
@@ -133,4 +135,11 @@ export default {
 };
 </script>
 <style scoped>
+.form-style{
+  margin: auto;
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 5px #ccc,-2px -2px 5px #ccc;}
 </style>

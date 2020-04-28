@@ -1,5 +1,6 @@
 <template>
   <div>
+    <section class="form-style">
     <el-form :label-position="labelPosition" label-width="80px" :model="houseInfo">
       <el-form-item label="姓名">
         <el-input v-model="houseInfo.name"></el-input>
@@ -31,6 +32,19 @@
       <el-form-item label="起租日期">
         <el-input v-model="houseInfo.time"></el-input>
       </el-form-item>
+      <el-form-item label="房屋图片" style="text-algin:left;">
+       <div class="demo-image__preview demo-image__position " >
+         <!-- <div class="image-position"> -->
+  <el-image 
+    style="width: 150px; "
+    :src="mainImg" 
+    :preview-src-list="srcList"
+    class="image-position"
+    >
+  </el-image>
+  <!-- </div> -->
+</div>
+</el-form-item>
       <!-- <div class="demo-image__preview">
   <el-image 
     style="width: 100px; height: 100px"
@@ -38,11 +52,13 @@
     :preview-src-list="srcList">
   </el-image>
       </div>-->
-      <el-row style="text-align:left;margin-left:80px">
+      <el-row style="text-align:left;margin:20px 80px">
         <el-button type="danger" @click="reject">审核拒绝</el-button>
         <el-button type="success" @click="agree">审核通过</el-button>
       </el-row>
     </el-form>
+    
+    </section>
   </div>
 </template>
 <script>
@@ -52,8 +68,18 @@ export default {
     return {
       labelPosition: "right",
       houseInfo: {},
-      srcList: []
+     
     };
+  },
+   computed:{
+   mainImg:function(){
+      let url= this.houseInfo.src.slice(0,1)
+     
+      return url[0]
+    },
+    srcList:function(){
+      return this.houseInfo.src.slice(0)
+    }
   },
   methods: {
     agree() {
@@ -132,4 +158,31 @@ export default {
 };
 </script>
 <style scoped>
+.form-style{
+  margin: auto;
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 5px #ccc,-2px -2px 5px #ccc;}
+  .demo-image__position{
+    
+    padding: 0 20px;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: -113px;
+    margin: 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+  }
+  .image-position{
+   
+   
+    /* position: absolute;
+   
+    top: 50%;
+    transform: translateY(-50%); */
+    margin-top: 15px;
+  }
 </style>

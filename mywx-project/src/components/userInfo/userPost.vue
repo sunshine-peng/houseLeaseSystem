@@ -121,7 +121,19 @@ import axios from 'axios'
         })
         .then(res => {
             if(res.data.success){
+               res.data.data.forEach(item => {
+                 let resImg = item.src.split(',')
+            // 格式化图片路径
+            console.log('resData')
+            console.log(resImg)
+            let resArr = resImg.map(value => {
+              return 'http://127.0.0.1:3002/users/upload/' + value
+            })
+            item.src = resArr
+              })
                 this.houseList=res.data.data
+                  console.log('this.houseList999')
+                console.log(this.houseList)
             }else{
                 this.$message('获取信息失败')
             }

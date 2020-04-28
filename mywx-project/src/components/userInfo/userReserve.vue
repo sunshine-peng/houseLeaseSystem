@@ -1,7 +1,7 @@
 <template>
     <div>
         <section>
-            <h1>用户申请发布信息</h1>
+            <h1>用户预约信息</h1>
         </section>
           <el-table
     :data="houseData"

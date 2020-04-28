@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
     <el-container style="height: 500px; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
     <el-menu :router="true">
@@ -21,8 +21,7 @@
           <el-menu-item index="2-2" route="/index/housetype">房屋类型</el-menu-item>
 
    
-          <el-menu-item index="2-3">选项3</el-menu-item>
-      
+         
        
       </el-submenu>
       
@@ -30,7 +29,15 @@
   </el-aside>
   
   <el-container>
+   
     <el-header style="text-align: right; font-size: 12px">
+       <div class="header_container">
+    	<el-breadcrumb separator-class="el-icon-arrow-right" >
+			<el-breadcrumb-item >首页</el-breadcrumb-item>
+			<el-breadcrumb-item v-for="(item, index) in $route.meta" :key="index">{{item}}</el-breadcrumb-item>
+		</el-breadcrumb>  
+    </div>
+    
      <div class="header">
          <h1 class="sysTitle">房屋租赁系统后台管理</h1>
           <span class="quit" @click="quit">退出</span>
@@ -38,7 +45,8 @@
      </div>
       
     </el-header>
-    
+   
+     
     <el-main>
        <router-view></router-view>
     </el-main>
@@ -48,9 +56,20 @@
     </div>
 </template>
 
-<style>
+<style >
+  
+  .header_container{
+    position: absolute;
+    display: inline-block;
+    
+		height: 60px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-left: 20px;
+	}
   .el-header {
-    background-color: #B3C0D1;
+    background-color: #EFF2F7;
     color: #333;
     line-height: 60px;
   }
@@ -60,10 +79,10 @@
   }
   .sysTitle{
        height: inherit;
-      text-align: left;
+      text-align: right;
       line-height: 60px;
-      flex:1;
-      margin: 0px;
+      flex:1.6;
+      margin: 0;
       font-size: 25px;
   }
   .header{
@@ -76,6 +95,7 @@
       font-size: 16px;
       flex: 1;
   }
+  
 </style>
 
 <script>
