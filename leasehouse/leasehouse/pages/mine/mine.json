@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "我的信息",
-"usingComponents": {
-  "personal-bgInfo": "/components/mineBginfo/mineBginfo"
-}
-}

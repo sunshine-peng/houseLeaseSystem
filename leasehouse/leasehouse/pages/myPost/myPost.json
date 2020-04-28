@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "house-item": "/components/houseInfo/houseInfo",
-    "house-auditing": "/components/houseAuditing/houseAuditing"
-  }
-}
